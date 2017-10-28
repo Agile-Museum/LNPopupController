@@ -12,7 +12,8 @@ import MapKit
 
 class MapViewController: UIViewController, UISearchBarDelegate {
 	@IBOutlet weak var mapView: MKMapView!
-	private var popupContentVC: LocationsController!
+	//private var popupContentVC: LocationsController!
+    private var contentVC: UIViewController!
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -25,17 +26,32 @@ class MapViewController: UIViewController, UISearchBarDelegate {
 		popupContentView.popupCloseButtonStyle = .none
 		popupInteractionStyle = .snap
 		
-		popupContentVC = storyboard!.instantiateViewController(withIdentifier: "PopupContentController") as! LocationsController
-		popupContentVC.tableView.backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+		//popupContentVC = storyboard!.instantiateViewController(withIdentifier: "PopupContentController") as! LocationsController
+		//popupContentVC.tableView.backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
 		
-		presentPopupBar(withContentViewController: popupContentVC, animated: false, completion: nil)
+		//presentPopupBar(withContentViewController: popupContentVC, animated: false, completion: nil)
+
+
+        // 1. creating a TestVC directly
+        //contentVC = storyboard!.instantiateViewController(withIdentifier: "TestVC")
+        //presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
+
+        // 2. creating the TestVC embedded inside of a UINavigationController
+        //contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
+        //presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
+
+        // 3. creating the TestVC embedded inside of a UINavigationController
+        // but with the TestVC.edgesForExtendedLayout set to bottom, left and right (so the top should be just underneath the nav bar, without any extra space)
+        contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
+        contentVC.childViewControllers.first!.edgesForExtendedLayout = [.bottom, .left, .right]
+        presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
 	}
 	
 	func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
 		openPopup(animated: true, completion: nil)
 		
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { 
-			self.popupContentVC.searchBar.becomeFirstResponder()
+			//self.popupContentVC.searchBar.becomeFirstResponder()
 		}
 		
 		return false;
