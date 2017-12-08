@@ -37,14 +37,14 @@ class MapViewController: UIViewController, UISearchBarDelegate {
         //presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
 
         // 2. creating the TestVC embedded inside of a UINavigationController
-        //contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
-        //presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
+        contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
+        presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
 
         // 3. creating the TestVC embedded inside of a UINavigationController
         // but with the TestVC.edgesForExtendedLayout set to bottom, left and right (so the top should be just underneath the nav bar, without any extra space)
-        contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
-        contentVC.childViewControllers.first!.edgesForExtendedLayout = [.bottom, .left, .right]
-        presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
+        //contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
+        //contentVC.childViewControllers.first!.edgesForExtendedLayout = [.bottom, .left, .right]
+        //presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
 	}
 	
 	func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
