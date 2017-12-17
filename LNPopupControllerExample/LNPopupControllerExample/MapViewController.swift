@@ -41,9 +41,9 @@ class MapViewController: UIViewController, UISearchBarDelegate {
         presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
 
         // 3. creating the TestVC embedded inside of a UINavigationController
-        // but with the TestVC.edgesForExtendedLayout set to bottom, left and right (so the top should be just underneath the nav bar, without any extra space)
+        // but with the TestVC.edgesForExtendedLayout set to left and right (so the top should be just underneath the nav bar, without any extra space and similar with the bottom safe area)
         //contentVC = storyboard!.instantiateViewController(withIdentifier: "TestNC")
-        //contentVC.childViewControllers.first!.edgesForExtendedLayout = [.bottom, .left, .right]
+        //contentVC.childViewControllers.first!.edgesForExtendedLayout = [.left, .right]
         //presentPopupBar(withContentViewController: contentVC, animated: false, completion: nil)
 	}
 	
