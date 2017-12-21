@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name     = 'LNPopupController'
-    s.version  = '2.5.2'
+    s.version  = '2.5.3'
     s.license  = { :type => 'MIT' }
     s.summary  = 'summary'
     s.homepage = 'https://github.com/LeoNatan/LNPopupController'
